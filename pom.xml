@@ -17,6 +17,7 @@
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
+		<finalName>Java_EE_RequestScope</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
