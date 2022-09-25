@@ -38,7 +38,7 @@ public class EncryptServlet extends HttpServlet {
         htmlText.append("<p>Encrypted User Name: </p>");
         htmlText.append(encryptedName);
         htmlText.append("<p>Database connection is:");
-        htmlText.append(request.getServletContext().getAttribute("dbConnection"));
+        htmlText.append((String)request.getServletContext().getAttribute("dbConnection"));
         htmlText.append("</p>");
         htmlText.append("</body>");
         htmlText.append("</html>");
