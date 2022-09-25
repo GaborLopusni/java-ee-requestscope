@@ -1,12 +1,11 @@
 package com.servlet.example;
 
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Random;
 
 @WebServlet(urlPatterns = "/encrypt")
@@ -17,7 +16,7 @@ public class EncryptServlet extends HttpServlet {
         String firstName = (String) request.getAttribute("fname");
         String lastName = (String) request.getAttribute("lname");
         String vowels = "AEIOUaeiou";
-        Random random = null;
+        Random random;
 
         StringBuilder sb = new StringBuilder(firstName);
         sb.append(lastName);
@@ -38,6 +37,9 @@ public class EncryptServlet extends HttpServlet {
         htmlText.append("<h1>Developer Starter Page</h1>");
         htmlText.append("<p>Encrypted User Name: </p>");
         htmlText.append(encryptedName);
+        htmlText.append("<p>Database connection is:");
+        htmlText.append(request.getServletContext().getAttribute("dbConnection"));
+        htmlText.append("</p>");
         htmlText.append("</body>");
         htmlText.append("</html>");
         PrintWriter writer = response.getWriter();

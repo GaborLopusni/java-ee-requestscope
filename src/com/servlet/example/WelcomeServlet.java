@@ -1,11 +1,14 @@
 package com.servlet.example;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.WebServlet;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/welcome")
@@ -16,6 +19,8 @@ public class WelcomeServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/encrypt");
         request.setAttribute("lname", request.getParameter("lname"));
         request.setAttribute("fname", request.getParameter("fname"));
+        ServletContext applicationScope = request.getServletContext();
+        applicationScope.setAttribute("dbConnection", "jdbc:derby:student_db");
         dispatcher.forward(request, response);
     }
 
